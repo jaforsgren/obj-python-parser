@@ -107,7 +107,6 @@ def write(model, path):
             _write_element(w, _build_vertexList(node['faces'], 1, model.vertexTextures()), 'vt')
             # write groups
             w.write('g {}\n'.format(node_name))
-
             # write faces
             _write_element(w, [['/'.join([str(int(i) + 1) for i in x])+ " " for x in ls] for ls in node['faces']], 'f ')
             w.write('\n\n')
