@@ -17,7 +17,7 @@ class Obj:
         self._workingdir = None
 
     def nodes(self):
-        return self._getEntries('nodes').items()
+        return list(self._getEntries('nodes').items())
 
     def verticies(self):
         return self._getEntries('verticies')
@@ -36,6 +36,9 @@ class Obj:
 
     def vertexTexture(self, face_index):
         return self.vertexTextures[face_index]
+
+    def isolate(self, node):
+        del self.rawdata['nodes'][node[0]]
 
     def _getEntry(self, type, index):
         entries = self.rawdata.get(type, [])
@@ -115,4 +118,3 @@ def write(model, path):
 def read_wavefront(infile):
     obj = parse(infile)
     return obj
-
